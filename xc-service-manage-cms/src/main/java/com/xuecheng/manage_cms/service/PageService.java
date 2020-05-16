@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PageService {
-    @Autowired
+    @Autowired//注入dao
     CmsPageRepository cmsPageRepository;
 
     /**
@@ -26,10 +26,10 @@ public class PageService {
      * @return
      */
     public QueryResponseResult findList(int page, int size, QueryPageRequest queryPageRequest) {
-        if (page < 0) {
+        if (page <= 0) {
             page = 1;
         }
-        page = page - 1;
+        page = page - 1;//dao的page从1开始
 
         if (size <= 0) {
             size = 10;
